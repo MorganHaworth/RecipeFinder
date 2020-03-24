@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Food</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet" media="screen">
+    <link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    
+
+  </head>
+  <style>
+    body {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .container-narrow {
+      margin: 0 auto;
+      max-width: 700px;
+    }
+
+    .container-narrow > hr {
+      margin: 40px 0 0 0;
+    }
+
+    .jumbotron {
+      margin: 5px 0;
+      text-align: center;
+      
+    }
+    .jumbotron h1 {
+      font-size: 72px;
+      line-height: 1;
+      font-weight: bold;
+    }
+    .jumbotron .btn {
+      font-size: 21px;
+      padding: 14px 24px;
+    }
+  </style>
+
+  <body>
+
+  <div class="container-narrow">
+    <ul class="nav nav-pills pull-right">
+      <li class="active"><a href="#">Find Recipe</a></li>
+      <li><a href="#">Results</a></li>
+      <li><a href="#">Cooking</a></li>
+    </ul>
+    <h3><span class="glyphicon glyphicon-asterisk" style="color:#5cb85c"></span> Recipe Finder</h3>
+
+    <hr>
+
+  <div class="jumbotron">
+    <h1>Let's narrow it down!</h1>
+    <p class="lead">Choose your bases to get started</p>
+    <a class="btn btn-large btn-success" href="#">Submit</a>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <h4 style="text-align: center;">PROTEIN</h4>
+      <select class="selectpicker" data-size="5">
+        <optgroup label="Red Meat">
+          <option>Beef</option>
+          <option>Pork</option>
+          <option>Lamb</option>
+        </optgroup>
+        <optgroup label="Poltry">
+          <option>Chicken</option>
+          <option>Turkey</option>
+          <option>Duck</option>
+        </optgroup>
+        <optgroup label="Fish">
+          <option>Salmon</option>
+          <option>Shrimp</option>
+          <option>Catfish</option>
+        </optgroup>
+        <optgroup label="Vegitarian">
+          <option>Mushroom</option>
+          <option>Lental</option>
+          <option>Bean</option>
+        </optgroup>
+      </select>
+      
+    </div>
+    <div class="col-md-4">
+      <h4 style="text-align: center;">CARBS</h4>
+      <select class="selectpicker" data-size="5">
+        <optgroup label="Bread">
+          <option>White</option>
+          <option>Multigrain</option>
+          <option>Gluten Free</option>
+        </optgroup>
+        <optgroup label="Pasta">
+          <option>Fettuccine</option>
+          <option>Linguine</option>
+          <option>Tortellini</option>
+        </optgroup>
+        <optgroup label="Rice">
+          <option>White</option>
+          <option>Brown</option>
+        </optgroup>
+        <optgroup label="Grain">
+          <option>Quinoa</option>
+          <option>Oats</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <h4 style="text-align: center;">THEME</h4>
+      <select class="selectpicker" data-size="5">
+        <option>Italian</option>
+        <option>Mexican</option>
+        <option>Chinese</option>
+        <option>American</option>
+        <option>Indian</option>
+        <option>Mediterranian</option>
+
+      </select>
+    </div>
+  </div>
+
+  <div class="footer">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p>&copy; Songware Whispers 2020</p>
+  </div>
+  </div>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script> 
+  <script src="js/bootstrap-select.min.js"></script>
+  </body>
+</html>
