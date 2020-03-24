@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Food</title>
+  </head>
+  <body>
+    {% extends "navigation.html" %}
+    {% block content %}
+    <div class="jumbotron">
+      <h1>Let's narrow it down!</h1>
+      <p class="lead">Choose your bases to get started</p>
+      <a class="btn btn-large btn-success" href="#">Submit</a>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <h4 style="text-align: center;">PROTEIN</h4>
+        <select class="selectpicker" data-size="5">
+          <optgroup label="Red Meat">
+            <option>Beef</option>
+            <option>Pork</option>
+            <option>Lamb</option>
+          </optgroup>
+          <optgroup label="Poltry">
+            <option>Chicken</option>
+            <option>Turkey</option>
+            <option>Duck</option>
+          </optgroup>
+          <optgroup label="Fish">
+            <option>Salmon</option>
+            <option>Shrimp</option>
+            <option>Catfish</option>
+          </optgroup>
+          <optgroup label="Vegitarian">
+            <option>Mushroom</option>
+            <option>Lental</option>
+            <option>Bean</option>
+          </optgroup>
+        </select>
+        
+      </div>
+      <div class="col-md-4">
+        <h4 style="text-align: center;">CARBS</h4>
+        <select class="selectpicker" data-size="5">
+          <optgroup label="Bread">
+            <option>White</option>
+            <option>Multigrain</option>
+            <option>Gluten Free</option>
+          </optgroup>
+          <optgroup label="Pasta">
+            <option>Fettuccine</option>
+            <option>Linguine</option>
+            <option>Tortellini</option>
+          </optgroup>
+          <optgroup label="Rice">
+            <option>White</option>
+            <option>Brown</option>
+          </optgroup>
+          <optgroup label="Grain">
+            <option>Quinoa</option>
+            <option>Oats</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <h4 style="text-align: center;">THEME</h4>
+        <select class="selectpicker" data-size="5">
+          <option>Italian</option>
+          <option>Mexican</option>
+          <option>Chinese</option>
+          <option>American</option>
+          <option>Indian</option>
+          <option>Mediterranian</option>
+
+        </select>
+      </div>
+    </div>
+
+    <div class="footer">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <p>&copy; Songware Whispers 2020</p>
+    </div>
+    </div>
+    {% endblock %}
+    <script src="static/js/jquery.js"></script>
+    <script src="static/js/bootstrap.min.js"></script> 
+    <script src="static/js/bootstrap-select.min.js"></script>
+  </body>
+</html>
