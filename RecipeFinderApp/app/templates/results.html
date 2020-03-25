@@ -4,70 +4,18 @@
 <head>
   <title>Food</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-  <link href="css/main.css" rel="stylesheet" media="screen">
+  <link href="static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="static/css/main.css" rel="stylesheet" media="screen">
   <link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="static/css/bootstrap-select.min.css">
 
 </head>
-<style>
-  img {
-  display: inline-block;
-  }   
-
-  body {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-
-  .container-narrow {
-    margin: 0 auto;
-    max-width: 700px;
-  }
-
-  .container-narrow>hr {
-    margin: 40px 0 0 0;
-  }
-
-  .jumbotron {
-    margin: 5px 0;
-    text-align: center;
-    background-color: white;
-  }
-
-  .jumbotron h1 {
-    font-size: 72px;
-    line-height: 1;
-    font-weight: bold;
-  }
-
-  .jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
-
-  .marketing {
-    margin: 40px 0;
-  }
-
-  .marketing p+h4 {
-    margin-top: 28px;
-  }
-</style>
 
 <body>
-
-  <div class="container-narrow">
-    <ul class="nav nav-pills pull-right">
-      <li class="active"><a href="#">Find Recipe</a></li>
-      <li><a href="#">Results</a></li>
-      <li><a href="#">Cooking</a></li>
-    </ul>
-    <h3><span class="glyphicon glyphicon-asterisk" style="color:#5cb85c"></span> Recipe Finder</h3>
-
-    <hr>
+  {% extends "navigation.html" %}
+  {% block content %}
 
     <h4>Results</h4>
 
@@ -215,10 +163,10 @@
       <p>&copy; Songware Whispers 2020</p>
     </div>
   </div>
-
-  <script src="js/jquery.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/bootstrap-select.min.js"></script>
+  {% endblock %}
+  <script src="static/js/jquery.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/bootstrap-select.min.js"></script>
 </body>
 
 </html>
