@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Convert</title>
+    </head>
+    <body>
+        {% extends "navigation.html" %}
+        {% block content %}
+        <h1>Testing Convert</h1>
+        <form action="/convert" method="post" id="convForm">
+            <label for="convertFrom">From:</label>
+            <input type="text" id="convertFrom" name="convertFrom"><br><br>
+            <label for="convertTo">To:</label>
+            <input type="text" id="convertTo" name="convertTo">
+        </form>
+
+        <button type="submit" form="convForm" value="Submit">Submit</button>
+        {% endblock %}
+    </body>
+</html>
