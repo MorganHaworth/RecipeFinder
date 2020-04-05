@@ -21,8 +21,8 @@ def cook():
 
 @app.route('/results', methods=['GET','POST'])
 def results():
-    meats = request.form.getlist('meat')
-    return render_template("results.html", meats=meats)
+    proteins = request.form.getlist('protein')
+    return render_template("results.html", proteins=proteins)
 
 @app.route('/conversions')
 def conversions():
@@ -48,16 +48,23 @@ def convertResults(unitFrom, number, unitTo):
         "teaspoon": 6
     }
     result = number * ratio[nameToNum[unitFrom]][nameToNum[unitTo]]
-
-    return (str(result) + ' ' + unitTo + 's') if result != 1 else (str(result) + ' ' + unitTo)
+    
+    unitFromString = unitFrom + 's' if result != 1 else unitFrom
+    unitToString = unitTo + 's' if result != 1 else unitTo
+    return str(number) + ' ' + unitFromString + ' is ' + str(result) + ' ' + unitToString
 
 @app.route('/convert', methods=['GET','POST'])
 def convert():
-    count = int(request.form.get('unitCount'))
-    convertFrom = request.form.get('fromUnit').lower()
-    convertTo = request.form.get('toUnit').lower()
-    result = convertResults(convertFrom, count, convertTo)
-    return render_template("convert.html", result=result)
+    count = request.form.get('unitCount')
+    if count:
+        count = int(count)
+        if count > 0:
+            convertFrom = request.form.get('fromUnit').lower()
+            convertTo = request.form.get('toUnit').lower()
+            result = convertResults(convertFrom, count, convertTo)
+            return render_template("convert.html", result=result)
+        return render_template("convert.html")
+    return render_template("convert.html")
 
 @app.route('/API')
 def recipes():
