@@ -28,7 +28,7 @@ def results():
 def conversions():
     return render_template("convert.html")
 
-def convertResults(cFrom, cTo):
+def convertResults(unitFrom, number, unitTo):
 
     ratio = [[1,4,8,16,128,256,768],
     [1/4,1,2,4,32,64,192],
@@ -47,21 +47,17 @@ def convertResults(cFrom, cTo):
         "tablespoon": 5,
         "teaspoon": 6
     }
+    result = number * ratio[nameToNum[unitFrom]][nameToNum[unitTo]]
 
-    convFrom = cFrom.split()
-    number = int(convFrom[0])
-    unitFrom = convFrom[1]
-    
-    result = number * ratio[nameToNum[unitFrom]][nameToNum[cTo]]
-
-    return str(result) + ' ' + cTo + 's'
+    return (str(result) + ' ' + unitTo + 's') if result != 1 else (str(result) + ' ' + unitTo)
 
 @app.route('/convert', methods=['GET','POST'])
 def convert():
-    convertFrom = request.form['convertFrom']
-    convertTo = request.form['convertTo']
-    result = convertResults(convertFrom, convertTo)
-    return render_template("convertResults.html", result=result)
+    count = int(request.form.get('unitCount'))
+    convertFrom = request.form.get('fromUnit').lower()
+    convertTo = request.form.get('toUnit').lower()
+    result = convertResults(convertFrom, count, convertTo)
+    return render_template("convert.html", result=result)
 
 @app.route('/API')
 def recipes():

@@ -6,14 +6,36 @@
         {% extends "navigation.html" %}
         {% block content %}
         <h1>Testing Convert</h1>
+        <h4>Choose how many of the first unit to convert to the second unit.</h4>
         <form action="/convert" method="post" id="convForm">
-            <label for="convertFrom">From:</label>
-            <input type="text" id="convertFrom" name="convertFrom"><br><br>
-            <label for="convertTo">To:</label>
-            <input type="text" id="convertTo" name="convertTo">
+            <input type="number" placeholder="Choose a number" class="form-control" name="unitCount">
+            <select class="selectpicker form-control" name="fromUnit" data-size="5">
+                <option>Gallon</option>
+                <option>Quart</option>
+                <option>Pint</option>
+                <option>Cup</option>
+                <option>Ounce</option>
+                <option>Tablespoon</option>
+                <option>Teaspoon</option>
+            </select><p style="margin: 5px 0">to</p>
+            <select class="selectpicker form-control" name="toUnit" data-size="5">
+                <option>Gallon</option>
+                <option>Quart</option>
+                <option>Pint</option>
+                <option>Cup</option>
+                <option>Ounce</option>
+                <option>Tablespoon</option>
+                <option>Teaspoon</option>
+            </select>
         </form>
-
         <button type="submit" form="convForm" value="Submit">Submit</button>
+        <br><br>
+
+        {% if result is defined%}
+        <h1>Results of coversion</h1>
+        <h2>{{result}}</h2>
+        {% endif %}
+
         {% endblock %}
     </body>
 </html>
