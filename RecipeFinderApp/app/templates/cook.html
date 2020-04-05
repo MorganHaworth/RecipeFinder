@@ -6,6 +6,14 @@
 </head>
 <body>
   {% extends "navigation.html" %}
+
+  {% set results =
+    [{'ing' : 'Chicken', 'amt' : '2 Breasts'}, {'ing' : 'Rice', 'amt' : '2
+    Cups'}, {'ing' : 'Curry', 'amt' : '2 Tsp'}] %} 
+
+    {% set dir = 
+    ['Cook Chicken', 'Cook Rice', 'Make Curry Sauce'] %}
+
   {% block content %}
     <div class="row">
       <div class="col-md-6">
@@ -18,22 +26,12 @@
             </tr>
           </thead>
           <tbody>
+            {% for l in results %}
             <tr>
-              <th scope="row">Chicken</th>
-              <td>2 Breasts</td>
+              <th scope="row">{{l.ing}}</th>
+              <td>{{l.amt}}</td>
             </tr>
-            <tr>
-              <th scope="row">Rice</th>
-              <td>2 Cups</td>
-            </tr>
-            <tr>
-              <th scope="row">Shrimp</th>
-              <td>1/2 Pount</td>
-            </tr>
-            <tr>
-              <th scope="row">Crab Legs</th>
-              <td>1/2 Pound</td>
-            </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
@@ -41,11 +39,11 @@
         <h4 class="card-title">Directions</h4>
         <br>
         <ul style="text-align: left;">
-          <li>Bread Chicken</li>
-          <li>Cook Chicken</li>
-          <li>Make Sauce</li>
-          <li>Cook Shrimp and Crab</li>
-          <li>Cook Rice</li>
+          {% for l in dir %}
+          <tr>
+            <li>{{l}}</li>
+          </tr>
+          {% endfor %}
         </ul>
       </div>
     </div>
@@ -70,12 +68,7 @@
 
 
       <div class="footer">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <br><br><br><br><br><br>
         <p>&copy; Songware Whispers 2020</p>
       </div>
     {% endblock %}

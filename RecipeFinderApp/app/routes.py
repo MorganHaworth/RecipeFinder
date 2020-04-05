@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request
 import requests
 import json
 from app import app
@@ -19,9 +19,10 @@ def about():
 def cook():
     return render_template("cook.html")
 
-@app.route('/results')
+@app.route('/results', methods=['GET','POST'])
 def results():
-    return render_template("results.html")
+    meats = request.form.getlist('meat')
+    return render_template("results.html", meats=meats)
 
 @app.route('/API')
 def recipes():
