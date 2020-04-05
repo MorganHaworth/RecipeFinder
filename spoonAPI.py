@@ -7,7 +7,7 @@ import os
 #Title, instructions, ingredients, cook time, serves, diffictuly, category
 
 
-#Pass in a List(array) of ingredients
+#Pass in a List(array) of ingredients and number of results wanted
 def getResultsFromAPI(ingredients, numResults):
     API_KEY = os.getenv(u'API_KEY')
 
@@ -57,7 +57,10 @@ def getResultsFromAPI(ingredients, numResults):
         instructionsArr.append(resultsDict)
     
     saveListToFile("offlineInstructionsResults.txt", instructionsArr)
-    #DEBUGGING: print(f"SIZE OF ARR = {len(instructionsArr)}")
+    
+    #If you want to get the instructions for each recipie, you can use the 
+    #getInstructionsById(id) method which pulls the instructions from offline text file
+    return resultsArr
 
 
 
@@ -147,7 +150,7 @@ def getInstructionsById(id):
     return instructions
 
 
-
+ 
 #Returns title of recipe
 def getTitleById(id):
     f = open(f"./offlineResults.txt", "r")
