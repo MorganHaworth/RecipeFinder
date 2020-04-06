@@ -26,9 +26,9 @@ def home():
     return render_template("welcome.html", ingredients=ingredients)
 
 
-@app.route('/about')
-def about():
-    return render_template("about.html")
+@app.errorhandler(404)
+def pageNotFound(e):
+    return render_template("404.html"), 404
 
 
 @app.route('/cook')
@@ -36,7 +36,7 @@ def cook():
     return render_template("cook.html")
 
 
-@app.route('/results', methods=['GET','POST'])
+@app.route('/results', methods=['GET', 'POST'])
 def results():
     ingredients = []
     ingredients.extend(request.form.getlist('protein'))
