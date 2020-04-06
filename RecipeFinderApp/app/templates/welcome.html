@@ -44,7 +44,7 @@
         <div class="col-md-4">
           <h4>Grain</h4>
           <select class="selectpicker" name="grain" multiple data-size="5">
-            {% for grain in ingredients.produce %}
+            {% for grain in ingredients.grain %}
             <option name={{grain.name}}>{{grain.name.capitalize()}}</option>
             {% endfor %}
           </select>
@@ -53,22 +53,12 @@
         <div class="col-md-4">
           <h4>Spice</h4>
           <select class="selectpicker" name="spice" multiple data-size="5">
-            {% for spice in ingredients.produce %}
+            {% for spice in ingredients.spice %}
             <option name={{spice.name}}>{{spice.name.capitalize()}}</option>
             {% endfor %}
           </select>
         </div>
     </form>
-
-    <div class="footer">
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <p>&copy; Songware Whispers 2020</p>
-    </div>
     {% endblock %}
     </body>
 </html>
