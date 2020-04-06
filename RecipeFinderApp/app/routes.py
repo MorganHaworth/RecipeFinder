@@ -2,6 +2,7 @@ from flask import render_template, request
 import requests
 import json
 from app import app
+from app import spoonAPI
 import os
 API_KEY = os.environ.get('API_KEY')
 url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients"
@@ -21,8 +22,16 @@ def cook():
 
 @app.route('/results', methods=['GET','POST'])
 def results():
-    proteins = request.form.getlist('protein')
-    return render_template("results.html", proteins=proteins)
+    ingredients = []
+    ingredients.extend(request.form.getlist('protein'))
+    ingredients.extend(request.form.getlist('carb'))
+    #ingredients.extend(request.form.getlist('vegetables'))
+    #ingredients.extend(request.form.getlist('fruits'))
+    #ingredients.extend(request.form.getlist('spices'))
+
+    recipes = spoonAPI.getResultsFromAPI(ingredients, 5)
+
+    return render_template("results.html", API_Results=recipes)
 
 @app.route('/conversions')
 def conversions():
