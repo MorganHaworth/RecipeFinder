@@ -1,0 +1,10 @@
+INSERT or IGNORE into ingredient(name, classification) values('milk', 'dairy');
+
+INSERT or IGNORE into ingredient(name, classification) values('apple', 'produce');
+
+INSERT or IGNORE into ingredient(name, classification) values('chicken', 'meat');
+INSERT or IGNORE into ingredient(name, classification) values('pork', 'meat');
+
+INSERT or IGNORE into ingredient(name, classification) values('pasta', 'grain');
+
+INSERT or IGNORE into ingredient(name, classification) values('cinnamon', 'spice');

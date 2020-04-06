@@ -13,70 +13,51 @@
         <input class="btn btn-large btn-success" type="submit">
         <!--<a class="btn btn-large btn-success" href="#">Submit</a>-->
       </div>
-    
       <div style="text-align: center;" class="row">
         <div class="col-md-4">
-          <h4>PROTEIN</h4>
-          <select class="selectpicker" name="protein" multiple data-size="5">
-            <optgroup label="Red Meat">
-              <option>Beef</option>
-              <option>Pork</option>
-              <option>Lamb</option>
-            </optgroup>
-            <optgroup label="Poltry">
-              <option>Chicken</option>
-              <option>Turkey</option>
-              <option>Duck</option>
-            </optgroup>
-            <optgroup label="Fish">
-              <option>Salmon</option>
-              <option>Shrimp</option>
-              <option>Catfish</option>
-            </optgroup>
-            <optgroup label="Vegitarian">
-              <option>Mushroom</option>
-              <option>Lental</option>
-              <option>Bean</option>
-            </optgroup>
+          <h4>Dairy</h4>
+          <select class="selectpicker" name="dairy" multiple data-size="5">
+            {% for dairy in ingredients.dairy %}
+            <option name={{dairy.name}}>{{dairy.name.capitalize()}}</option>
+            {% endfor %}
           </select>
+        </div>
 
-        </div>
         <div class="col-md-4">
-          <h4 style="text-align: center;">CARBS</h4>
-          <select class="selectpicker" name="carb" multiple data-size="5">
-            <optgroup label="Bread">
-              <option>White</option>
-              <option>Multigrain</option>
-              <option>Gluten Free</option>
-            </optgroup>
-            <optgroup label="Pasta">
-              <option>Fettuccine</option>
-              <option>Linguine</option>
-              <option>Tortellini</option>
-            </optgroup>
-            <optgroup label="Rice">
-              <option>White</option>
-              <option>Brown</option>
-            </optgroup>
-            <optgroup label="Grain">
-              <option>Quinoa</option>
-              <option>Oats</option>
-            </optgroup>
+          <h4>Produce</h4>
+          <select class="selectpicker" name="produce" multiple data-size="5">
+            {% for produce in ingredients.produce %}
+            <option name={{produce.name}}>{{produce.name.capitalize()}}</option>
+            {% endfor %}
           </select>
         </div>
-        <div class="col-md-4">
-          <h4 style="text-align: center;">THEME</h4>
-          <select class="selectpicker" name="theme" multiple data-size="5">
-            <option>Italian</option>
-            <option>Mexican</option>
-            <option>Chinese</option>
-            <option>American</option>
-            <option>Indian</option>
-            <option>Mediterranian</option>
 
+        <div class="col-md-4">
+          <h4>Meat</h4>
+          <select class="selectpicker" name="meat" multiple data-size="5">
+            {% for meat in ingredients.meat %}
+            <option name={{meat.name}}>{{meat.name.capitalize()}}</option>
+            {% endfor %}
           </select>
         </div>
-      </div>
+
+        <div class="col-md-4">
+          <h4>Grain</h4>
+          <select class="selectpicker" name="grain" multiple data-size="5">
+            {% for grain in ingredients.produce %}
+            <option name={{grain.name}}>{{grain.name.capitalize()}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <h4>Spice</h4>
+          <select class="selectpicker" name="spice" multiple data-size="5">
+            {% for spice in ingredients.produce %}
+            <option name={{spice.name}}>{{spice.name.capitalize()}}</option>
+            {% endfor %}
+          </select>
+        </div>
     </form>
 
     <div class="footer">
