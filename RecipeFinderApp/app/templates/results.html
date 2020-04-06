@@ -8,151 +8,45 @@
 <body>
   {% extends "navigation.html" %}
   {% block content %}
-
+  {% set results = [
+    {'title': 'Tikki Masala', 'ing': 'Rice, Curry, Chicken', 'time':'30 Min', 'serve' : '2', 'diff' : 'easy'}, 
+    {'title': 'Red Curry Chicken', 'ing': 'Rice, Curry, Chicken', 'time':'30 Min', 'serve' : '2', 'diff' : 'easy'}
+  ] %}
     <h4>Results</h4>
-
+    <!--{{ proteins }}-->
+    {{ API_Results }}
+    {% for l in results %}
     <hr>
 
     <div class="card mb-3" style="max-width: 540px;">
       <div class="row no-gutters">
         <div class="col-md-4">
-          <img src="..." class="card-img" alt="...">
+          <img src="{{l.img}}" class="card-img" alt="...">
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">Chicken a la Mer</h5>
-            <h6 class="card-title">Chicken, Shrimp, Crab, Rice</h6>
-            <p class="card-text"><small class="text-muted">Cook Time: 25 min</small></p>
-            <p class="card-text"><small class="text-muted">Serves: 2</small></p>
-            <p class="card-text"><small class="text-muted">Difficulty: Medium</small></p>
+            <h5 class="card-title">{{l.title}}</h5>
+            <h6 class="card-title">{{l.ing}}</h6>
+            <p class="card-text">
+              <small class="text-muted">Cook Time: {{l.time}}</small>
+            </p>
+            <p class="card-text">
+              <small class="text-muted">Serves: {{l.serve}}</small>
+            </p>
+            <p class="card-text">
+              <small class="text-muted">Difficulty: {{l.diff}}</small>
+            </p>
           </div>
         </div>
       </div>
     </div>
-
-    <hr>
-
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="..." class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Chicken a la Mer</h5>
-            <h6 class="card-title">Chicken, Shrimp, Crab, Rice</h6>
-            <p class="card-text"><small class="text-muted">Cook Time: 25 min</small></p>
-            <p class="card-text"><small class="text-muted">Serves: 2</small></p>
-            <p class="card-text"><small class="text-muted">Difficulty: Medium</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr>
-
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="..." class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Chicken a la Mer</h5>
-            <h6 class="card-title">Chicken, Shrimp, Crab, Rice</h6>
-            <p class="card-text"><small class="text-muted">Cook Time: 25 min</small></p>
-            <p class="card-text"><small class="text-muted">Serves: 2</small></p>
-            <p class="card-text"><small class="text-muted">Difficulty: Medium</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr>
-
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="..." class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Chicken a la Mer</h5>
-            <h6 class="card-title">Chicken, Shrimp, Crab, Rice</h6>
-            <p class="card-text"><small class="text-muted">Cook Time: 25 min</small></p>
-            <p class="card-text"><small class="text-muted">Serves: 2</small></p>
-            <p class="card-text"><small class="text-muted">Difficulty: Medium</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr>
-
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="..." class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Chicken a la Mer</h5>
-            <h6 class="card-title">Chicken, Shrimp, Crab, Rice</h6>
-            <p class="card-text"><small class="text-muted">Cook Time: 25 min</small></p>
-            <p class="card-text"><small class="text-muted">Serves: 2</small></p>
-            <p class="card-text"><small class="text-muted">Difficulty: Medium</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr>
-
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="..." class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Chicken a la Mer</h5>
-            <h6 class="card-title">Chicken, Shrimp, Crab, Rice</h6>
-            <p class="card-text"><small class="text-muted">Cook Time: 25 min</small></p>
-            <p class="card-text"><small class="text-muted">Serves: 2</small></p>
-            <p class="card-text"><small class="text-muted">Difficulty: Medium</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr>
-
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="..." class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Chicken a la Mer</h5>
-            <h6 class="card-title">Chicken, Shrimp, Crab, Rice</h6>
-            <p class="card-text"><small class="text-muted">Cook Time: 25 min</small></p>
-            <p class="card-text"><small class="text-muted">Serves: 2</small></p>
-            <p class="card-text"><small class="text-muted">Difficulty: Medium</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
+    {% endfor %}
     
 
     <div class="footer">
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+      <br><br><br><br><br><br>
       <p>&copy; Songware Whispers 2020</p>
+    </div>
     </div>
   {% endblock %}
 </body>
