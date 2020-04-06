@@ -6,15 +6,12 @@
 </head>
 <body>
   {% extends "navigation.html" %}
-
-  {% set results =
-    [{'ing' : 'Chicken', 'amt' : '2 Breasts'}, {'ing' : 'Rice', 'amt' : '2
-    Cups'}, {'ing' : 'Curry', 'amt' : '2 Tsp'}] %} 
-
-    {% set dir = 
-    ['Cook Chicken', 'Cook Rice', 'Make Curry Sauce'] %}
-
   {% block content %}
+  {% if recipe is defined %}
+    <h2>{{ recipe.title }}</h2>
+    <div class="row" style="text-align: center; margin: 30px 0;">
+      <img src="{{ recipe.image }}" alt="{{recipe.title}}">
+    </div>
     <div class="row">
       <div class="col-md-6">
         <h4 class="card-title">Ingredient List</h4>
@@ -26,10 +23,10 @@
             </tr>
           </thead>
           <tbody>
-            {% for l in results %}
+            {% for l in recipe.extendedIngredients %}
             <tr>
-              <th scope="row">{{l.ing}}</th>
-              <td>{{l.amt}}</td>
+              <th scope="row">{{ l.originalName|capitalize }}</th>
+              <td>{{l.amount|round|int if l.amount.is_integer() else l.amount }} {{l.unit}}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -38,18 +35,12 @@
       <div class="col-md-6">
         <h4 class="card-title">Directions</h4>
         <br>
-        <ul style="text-align: left;">
-          {% for l in dir %}
-          <tr>
-            <li>{{l}}</li>
-          </tr>
-          {% endfor %}
-        </ul>
+        <p>{{ recipe.instructions }}</p>
       </div>
     </div>
-    <div class="row">
-
-    </div>
+    {% else %}
+    <h1>Please navigate to Find Recipe to search for a recipe</h1>
+    {% endif %}
     {% endblock %}
 </body>
 

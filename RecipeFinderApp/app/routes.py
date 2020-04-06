@@ -9,7 +9,7 @@ url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findB
 
 
 @app.route('/')
-@app.route('/welcome')
+@app.route('/welcome/')
 def home():
     dairy = Ingredient.query.filter_by(classification='dairy')
     produce = Ingredient.query.filter_by(classification='produce')
@@ -30,25 +30,30 @@ def home():
 def pageNotFound(e):
     return render_template("404.html"), 404
 
-
-@app.route('/cook')
+@app.route('/cook/', methods=['GET'])
 def cook():
     return render_template("cook.html")
 
 
-@app.route('/results', methods=['GET', 'POST'])
+@app.route('/cook/<recipeID>', methods=['GET'])
+def cookWithRecipeID(recipeID):
+    recipe = spoonAPI.getInstructionsById(recipeID)
+    return render_template("cook.html", recipe=recipe)
+
+
+@app.route('/results/', methods=['GET', 'POST'])
 def results():
     ingredients = []
-    ingredients.extend(request.form.getlist('protein'))
-    ingredients.extend(request.form.getlist('carb'))
-    #ingredients.extend(request.form.getlist('vegetables'))
-    #ingredients.extend(request.form.getlist('fruits'))
-    #ingredients.extend(request.form.getlist('spices'))
-    recipes = spoonAPI.getResultsFromAPI(ingredients, 5)
-    return render_template("results.html", API_Results=recipes)
+    ingredients.extend(request.form.getlist('dairy'))
+    ingredients.extend(request.form.getlist('produce'))
+    ingredients.extend(request.form.getlist('meat'))
+    ingredients.extend(request.form.getlist('grain'))
+    ingredients.extend(request.form.getlist('spice'))
+    recipes = spoonAPI.getResultsFromAPI(ingredients, 2)
+    return render_template("results.html", results=recipes)
 
 
-@app.route('/conversions')
+@app.route('/conversions/')
 def conversions():
     return render_template("convert.html")
 
@@ -80,7 +85,7 @@ def convertResults(unitFrom, number, unitTo):
     return str(number) + ' ' + unitFromString + ' is ' + str(result) + ' ' + unitToString
 
 
-@app.route('/convert', methods=['GET','POST'])
+@app.route('/convert/', methods=['GET', 'POST'])
 def convert():
     count = request.form.get('unitCount')
     if count:
@@ -94,6 +99,6 @@ def convert():
     return render_template("convert.html")
 
 
-@app.route('/API')
+@app.route('/API/')
 def recipes():
     return render_template("API-key-test.html", key=API_KEY)
