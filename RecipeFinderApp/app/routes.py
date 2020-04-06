@@ -1,24 +1,40 @@
 from flask import render_template, request
-import requests
-import json
 from app import app
 from app import spoonAPI
 import os
+from app.models import Ingredient
+
 API_KEY = os.environ.get('API_KEY')
 url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients"
+
 
 @app.route('/')
 @app.route('/welcome')
 def home():
-    return render_template("welcome.html")
+    dairy = Ingredient.query.filter_by(classification='dairy')
+    produce = Ingredient.query.filter_by(classification='produce')
+    meat = Ingredient.query.filter_by(classification='meat')
+    grain = Ingredient.query.filter_by(classification='grain')
+    spice = Ingredient.query.filter_by(classification='spice')
+    ingredients = {
+        'dairy': dairy,
+        'produce': produce,
+        'meat': meat,
+        'grain': grain,
+        'spice': spice
+    }
+    return render_template("welcome.html", ingredients=ingredients)
+
 
 @app.route('/about')
 def about():
     return render_template("about.html")
 
+
 @app.route('/cook')
 def cook():
     return render_template("cook.html")
+
 
 @app.route('/results', methods=['GET','POST'])
 def results():
@@ -28,24 +44,25 @@ def results():
     #ingredients.extend(request.form.getlist('vegetables'))
     #ingredients.extend(request.form.getlist('fruits'))
     #ingredients.extend(request.form.getlist('spices'))
-
     recipes = spoonAPI.getResultsFromAPI(ingredients, 5)
-
     return render_template("results.html", API_Results=recipes)
+
 
 @app.route('/conversions')
 def conversions():
     return render_template("convert.html")
 
-def convertResults(unitFrom, number, unitTo):
 
-    ratio = [[1,4,8,16,128,256,768],
-    [1/4,1,2,4,32,64,192],
-    [1/8,1/2,1,2,16,32,96],
-    [1/16,1/4,1/2,1,8,16,48],
-    [1/128,1/32,1/16,1/8,1,2,6],
-    [1/256,1/64,1/32,1/16,1/2,1,3],
-    [1/768,1/92,1/96,1/48,1/6,1/3,1]]
+def convertResults(unitFrom, number, unitTo):
+    ratio = [
+        [1, 4, 8, 16, 128, 256, 768],
+        [1/4, 1, 2, 4, 32, 64, 192],
+        [1/8, 1/2, 1, 2, 16, 32, 96],
+        [1/16, 1/4, 1/2, 1, 8, 16, 48],
+        [1/128, 1/32, 1/16, 1/8, 1, 2, 6],
+        [1 / 256, 1/64, 1/32, 1/16, 1/2, 1, 3],
+        [1/768, 1/92, 1/96, 1/48, 1/6, 1/3, 1]
+    ]
 
     nameToNum = {
         "gallon": 0,
@@ -57,10 +74,11 @@ def convertResults(unitFrom, number, unitTo):
         "teaspoon": 6
     }
     result = number * ratio[nameToNum[unitFrom]][nameToNum[unitTo]]
-    
+
     unitFromString = unitFrom + 's' if result != 1 else unitFrom
     unitToString = unitTo + 's' if result != 1 else unitTo
     return str(number) + ' ' + unitFromString + ' is ' + str(result) + ' ' + unitToString
+
 
 @app.route('/convert', methods=['GET','POST'])
 def convert():
@@ -74,6 +92,7 @@ def convert():
             return render_template("convert.html", result=result)
         return render_template("convert.html")
     return render_template("convert.html")
+
 
 @app.route('/API')
 def recipes():
